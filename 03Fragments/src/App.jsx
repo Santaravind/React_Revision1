@@ -6,7 +6,7 @@ import Errormess from './Errormess'
 
 function App() {
   
-     const [fooditems ,setFooditems]= useState(["dal" ,"chaval","roti","salet"])
+     const [fooditems ,setFooditems]= useState(["Dal","Roti"])
      const onkey=(event)=>{
       if(event.key==='Enter'){
         const newItem = event.target.value;
