@@ -1,16 +1,15 @@
- 
- 
- const Item=(props)=>{
+import React from 'react'
 
-    return(
-        <> 
-        <li className='list-group-item'> {props.fooditem}</li>
-        <button type="button" 
-        onClick={(e)=>alert("Buy now")}
-        className="btn btn-info">Info</button>
-        </>
-    )
+function Item({fooditems} ) {
+  return (
+    <div>
+     <ul className="list-group">
+    {fooditems.map((item,index) => (
+       <li key={index}  className="list-group-item">{item}</li>
+    ))}
+    </ul>
+    </div>
+  )
+}
 
- };
-
- export default Item;
+export default Item

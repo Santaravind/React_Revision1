@@ -1,24 +1,35 @@
-import { useState } from 'react'
+import React,  { useState } from 'react'
 import Item from './Item'
+import Input from './Input'
 import Errormess from './Errormess'
+
 
 function App() {
   
-  let foodItem=["dal" ,"chaval","roti","salet"]
+     const [fooditems ,setFooditems]= useState(["dal" ,"chaval","roti","salet"])
+     const onkey=(event)=>{
+      if(event.key==='Enter'){
+        const newItem = event.target.value;
+        //console.log(newItem)
+        setFooditems((prevItems) => [...prevItems, newItem]); // Append the new item to the array
+        event.target.value = ''; 
+      }
+     }
     
   return (
     <>  
-    <div className='.bg-dark'> 
-       <h1> Healthy Food</h1>
-        <ul  className='list-group'> 
-          {foodItem.map((item)=>(
-            <><Errormess key={item} items={item} />
-            <Item key={item} fooditem={item}> </Item></>
-            
-          ))}
-        </ul>
- 
-        </div>
+    <center> 
+    <h1>Healthy food itme</h1>
+    <Input handldalKeyPress={onkey}
+      
+    />
+  
+     <Item  fooditems={fooditems}/>
+    <Errormess  fooditems={fooditems}/>
+
+    </center>
+    
+         
     </>
   )
 }
