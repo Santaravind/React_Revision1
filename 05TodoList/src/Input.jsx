@@ -16,7 +16,8 @@ function Input({handlClick}) {
             
              }
              
-    const handlonButtonclick=()=>{
+    const handlonButtonclick=(e)=>{
+   e.preventDefault();
         handlClick(newtodo,dueDate);
         setdueDate("")
         setNewtodo("")
@@ -24,14 +25,15 @@ function Input({handlClick}) {
 
   return (
     <div className='m-2 '>
+      <form action="" onSubmit={handlonButtonclick}>
         <input type="text" placeholder='Enter todo list' className='border-2 border-gray-800 p-1' value={newtodo}  onChange={handlontodo}
         />
         <input type="date"  className='border-2 border-gray-800 m-1' value={dueDate} onChange={handlondate}/>
         <button className='border font-bold p-1 bg-purple-400 rounded-lg    
         '
-        onClick={handlonButtonclick}
+        
         >Add</button>
-
+      </form>
       
     </div>
   )
