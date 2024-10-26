@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Input from './Input'
 import TodoItem from './TodoItem'
-
+import { todoApi } from './Store'
 
 function App() {
   // const Items=[
@@ -25,22 +25,27 @@ function App() {
     setTodocon(additem)
   }
 
-  const handltDeleteClick=(itemName)=>{
+  const deleteItem=(itemName)=>{
     const del =todocon.filter((item) => item.name !== itemName);;
     setTodocon(del)
 
   }
  
   return (
-    <>
+    <todoApi.Provider value={{
+      todocon,
+      onNewitem,
+      deleteItem
+
+    }}>
     <div className='flex items-center justify-center '>
      <div className=' border-2 w-fit p-4 m-3 items-center justify-center '>
       <h1 className='text-center font-bold font-serif text-2xl'>Todo List  </h1>
-      <Input handlClick={onNewitem} />
-      <TodoItem todo={todocon} deletclick={handltDeleteClick} />
+      <Input />
+      <TodoItem   />
      </div>
      </div>
-    </>
+    </todoApi.Provider>
   )
 }
 

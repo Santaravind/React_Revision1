@@ -1,8 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { useState } from 'react';
+import { todoApi } from './Store';
 
 
-function Input({handlClick}) {
+function Input() {
+        const {onNewitem}=useContext(todoApi)
     // const [newtodo, setNewtodo] = useState();
     // const [dueDate,setdueDate]=useState()
 
@@ -23,7 +25,7 @@ function Input({handlClick}) {
 
        const newtodo=newTodo.current.value;
        const duedate=dueDate.current.value;
-        handlClick(newtodo,duedate);
+       onNewitem(newtodo,duedate);
 
         newTodo.current.value="";
         duedate.current.value="";
@@ -38,7 +40,7 @@ function Input({handlClick}) {
          className='border-2 border-gray-800 p-1'
           ref={newTodo}
           
-          // onChange={handlontodo}
+         
         />
         <input type="date"  
         className='border-2 border-gray-800 m-1' 

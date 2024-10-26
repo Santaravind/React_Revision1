@@ -1,22 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { todoApi } from './Store'
 
-function TodoItem({todo ,deletclick}) {
+function TodoItem() {
+const {deleteItem}=  useContext(todoApi)
   
-  const handlDelete=()=>{
-    console.log("Delet is call")
-  }
+ 
+  const{ todocon }=useContext(todoApi)
   return (
     <div>
         <ul className='m-1  '>
         
-            {   todo.map((todo)=>(
+            {    todocon.map((todo)=>(
                 <div className='flex gap-9 '> 
                 <li className=' m-2 'key={todo}>{todo.name }   
                  </li>
                  <li className='m-2'>{todo.date}</li>
 
                  
-                 <button className='border-2 p-1  rounded-lg bg-red-500' onClick={()=>deletclick(todo.name)}>Delete</button>
+                 <button className='border-2 p-1  rounded-lg bg-red-500' onClick={()=>deleteItem(todo.name)}>Delete</button>
                
                  
                 </div>))}
